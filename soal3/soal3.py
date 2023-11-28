@@ -1,9 +1,3 @@
-'''
-Author: Mahendra Data - https://github.com/mahendradata
-References: https://www.geeksforgeeks.org/rat-in-a-maze/
-'''
-
-
 class Maze:
 
     MOVE = (

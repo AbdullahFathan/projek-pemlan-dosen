@@ -1,9 +1,3 @@
-'''
-Author: Mahendra Data - https://github.com/mahendradata
-References: https://www.geeksforgeeks.org/rat-in-a-maze/
-'''
-
-
 class Maze:
 
     MOVE = (
@@ -74,6 +68,7 @@ class Maze:
     # show many step solution
     def __len_solution__(self):
         step = 0;
+        print(self.PATH)
         for i in self.PATH:
             step +=sum(i)
         return step

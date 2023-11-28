@@ -1,9 +1,3 @@
-'''
-Author: Mahendra Data - https://github.com/mahendradata
-References: https://www.geeksforgeeks.org/rat-in-a-maze/
-'''
-
-
 class Maze:
 
     MOVE = (
@@ -105,3 +99,13 @@ if __name__ == "__main__":
              [1, 0, 1, 0, 1]]
     solver.solve(maze3, start=(2, 2), finish=(0, 0))
     print()
+
+    maze = [[1, 0, 1, 1, 1],
+            [1, 0, 1, 0, 1],
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 0, 1],
+            [1, 0, 1, 0, 1],
+            ]
+
+    newMaze = solver.solve(maze, start=(2, 2), finish=(4, 4))
+

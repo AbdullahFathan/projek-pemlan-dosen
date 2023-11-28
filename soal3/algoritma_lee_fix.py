@@ -37,21 +37,33 @@ class Maze:
             print()
 
     def __lee_algorithm__(self, start):
+        #membuat queue kosong 
         queue = Queue()
-        queue.put((start, [start]))  # Include the current path along with the current position
+        #meletakan rute awal
+        queue.put((start, [start]))  
 
+        #membuat perulangan jika queue tidak kosong
         while not queue.empty():
+            # mendapatkan titik rute dan path 
             (row, col), path = queue.get()
 
+            #jika titik merupakan finis
             if (row, col) == self.FINISH:
-                self.__update_path__(path)  # Update the self.PATH matrix with the shortest path
+                #update path terpendek
+                self.__update_path__(path) 
                 return path
 
+            #melakukan setiap peregakan yang mungkin
             for move_row, move_col in Maze.MOVE:
+                #update nilai koordinat setelah peregakan baru
                 new_row, new_col = row + move_row, col + move_col
+                #cek apakah valid peregakannya
                 if self.__is_valid__(new_row, new_col):
+                    #update nilai path dengan +1 sebagai tanda sudah di kunjungi
                     self.PATH[new_row][new_col] = self.PATH[row][col] + 1
+                    #memasukan kedalam queue
                     queue.put(((new_row, new_col), path + [(new_row, new_col)]))
+        #kembalikan none jika tidak ada rute
         return None
 
     def __is_valid__(self, row, col):
@@ -62,16 +74,16 @@ class Maze:
             self.PATH[row][col] = step
 
 
-# Driver program to test Maze class
+
 if __name__ == "__main__":
     solver = Maze()
 
     maze = [[1, 0, 1, 1, 1],
             [1, 0, 1, 0, 1],
             [1, 0, 1, 1, 1],
-            [1, 1, 1, 0, 1],
+            [1, 1, 1, 1, 1],
             [1, 0, 1, 0, 1],
             ]
 
     newMaze = solver.solve(maze, start=(0, 0), finish=(4, 4))
-    
+
